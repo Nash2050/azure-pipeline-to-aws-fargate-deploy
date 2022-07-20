@@ -26,17 +26,6 @@ stages:
       inputs:
         command: 'build'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
-
-    - task: replacetokens@5
-      displayName: 'Replace image version in deployment.yaml'
-      inputs:
-        rootDirectory: '$(System.DefaultWorkingDirectory)'
-        targetFiles: |
-          **/fargate/*.json
-          **/hello-world.go
-        tokenPrefix: '#{'
-        tokenSuffix: '}#'
-
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)/fargate'
